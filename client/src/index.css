@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400..800&family=Chilanka&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+	font-family: 'Baloo Chettan 2', sans-serif;
+}
