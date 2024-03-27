@@ -8,7 +8,11 @@ export default {
     "node_modules/react-daisyui/dist/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'betterhover': {'raw': '(hover: none)'}
+      }
+    },
   },
   plugins: [require('daisyui')],
 }

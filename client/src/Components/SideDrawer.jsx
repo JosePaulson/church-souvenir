@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Drawer, Menu } from 'react-daisyui';
-import { wards } from '../warddb'
+import { wards } from '../wards'
 const SideDrawer = ({ visible, toggleVisible }) => {
 	return (
 		<Drawer
