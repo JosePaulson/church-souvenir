@@ -21,6 +21,14 @@ const usersApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+		getAllEditors: builder.query({
+            query: () => ({
+                url: USERS_URL,
+                credentials: 'include'
+            }),
+            keepUnusedDataFor: 5
+        }),
+
 		logoutUser: builder.mutation({
             query: () => ({
                 url: `${USERS_URL}/logout`,
@@ -28,6 +36,14 @@ const usersApiSlice = apiSlice.injectEndpoints({
                 credentials: 'include'
             })
         }),
+
+        deleteUser: builder.mutation({
+            query: (userId) => ({
+                url: `${USERS_URL}/${userId}`,
+                method: 'DELETE',
+                credentials: 'include',
+            })
+        })
     })
 })
 
@@ -35,4 +51,6 @@ export const {
     useLoginUserMutation,
     useRegisterUserMutation,
 	useLogoutUserMutation,
+    useLazyGetAllEditorsQuery,
+    useDeleteUserMutation,
 } = usersApiSlice
