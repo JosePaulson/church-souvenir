@@ -2,7 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Drawer, Menu } from 'react-daisyui';
 import { wards } from '../wards'
+import { useSelector } from 'react-redux';
 const SideDrawer = ({ visible, toggleVisible }) => {
+
+	const { userInfo } = useSelector(state=>state.auth)
 	return (
 		<Drawer
 			className='z-[100]'
@@ -24,6 +27,25 @@ const SideDrawer = ({ visible, toggleVisible }) => {
 							</div>
 						</Menu.Details>
 					</Menu.Item>
+					<div className='mt-auto'>
+						{/* show links to admin/editor */}
+						{userInfo && <Menu.Item >
+							<Link to={'/add-house'} onClick={toggleVisible}>
+								Add House
+							</Link>
+						</Menu.Item>}
+						{/* link restricted to admin only */}
+						{userInfo?.isAdmin && <Menu.Item >
+							<Link to={'/register'} onClick={toggleVisible}>
+								Add Editor
+							</Link>
+						</Menu.Item>}
+						{!userInfo && <Menu.Item >
+							<Link to={'/login'} onClick={toggleVisible}>
+								Admin Login
+							</Link>
+						</Menu.Item>}
+					</div>
 				</Menu>
 			}
 		>

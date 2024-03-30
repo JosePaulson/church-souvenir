@@ -16,6 +16,13 @@ const housesApiSlice = apiSlice.injectEndpoints({
                 url: HOUSES_URL
             }),
             keepUnusedDataFor: 5,
+        }),
+
+        getHousesByWard: builder.query({
+            query: (ward) => ({
+                url: `${HOUSES_URL}/wards/${ward}`, 
+            }),
+            keepUnusedDataFor: 5,
         })
 	})
 })
@@ -23,4 +30,5 @@ const housesApiSlice = apiSlice.injectEndpoints({
 export const {
 	useGetAllHousesQuery,
     useAddHouseMutation,
+    useGetHousesByWardQuery,
 } = housesApiSlice

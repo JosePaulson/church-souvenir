@@ -1,7 +1,7 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import { useCallback, useState } from 'react'
-import Header from './Components/Header'
-import SideDrawer from './Components/SideDrawer'
+import Header from './components/Header'
+import SideDrawer from './components/SideDrawer'
 
 const App = () => {
   const [visible, setVisible] = useState(false);

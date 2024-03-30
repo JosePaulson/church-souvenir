@@ -3,7 +3,8 @@ import connectDB from './config/mongoDBConfig.js'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import housesRoutes from './routes/HousesRoutes.js'
+import housesRoutes from './routes/housesRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 import { notFound, errorHandler } from './middlewares/errorHandler.js'
 
 
@@ -15,7 +16,7 @@ connectDB()
 const app = express()
 
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: 'http://localhost:5173',
     credentials: true,
 }))
 
@@ -28,6 +29,7 @@ app.get('/', (req, res)=>{
 })
 
 app.use('/api/houses', housesRoutes)
+app.use('/api/auth', authRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

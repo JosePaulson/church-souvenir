@@ -1,18 +1,19 @@
 import React from 'react'
-import { useGetAllHousesQuery } from '../slices/housesApiSlice'
+import { useGetHousesByWardQuery } from '../slices/housesApiSlice'
 import { wards } from '../wards'
 import { useParams } from 'react-router-dom'
 import { Card } from 'react-daisyui'
-import MembersTable from '../Components/MembersTable'
+import MembersTable from '../components/MembersTable'
+import Loader from '../components/Loader'
 
 const WardScreen = () => {
 	const { id: wardNumber } = useParams()
-	const { data: houses, isLoading, error } = useGetAllHousesQuery()
+	const { data: houses, isLoading, error } = useGetHousesByWardQuery(wardNumber)
 	return (
 		isLoading ? 
-			<h1>loading..</h1>
+			<Loader />
 			: error ? 
-				console.log(error?.data?.message || error?.error)
+				alert(error?.data?.message || error?.error)
 				: <div className='relative'>
 					<h1 className='right-0 inline-block px-5 py-2 font-semibold bg-gray-200 rounded-md opacity-95 z-[4] fixed'>W#{wardNumber} &nbsp;{wards[wardNumber - 1].name}</h1>
 					<div className="space-y-5">

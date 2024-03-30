@@ -8,7 +8,7 @@ import {
   Button,
   Checkbox
 } from 'react-daisyui'
-import MembersTable from '../Components/MembersTable'
+import MembersTable from '../components/MembersTable'
 import { useAddHouseMutation } from '../slices/housesApiSlice'
 
 const AddHouseScreen = () => {
@@ -46,6 +46,7 @@ const AddHouseScreen = () => {
 
   function handleAddMemeber() {
     if(member.age.trim() && member.name.trim() && member.work.trim()){
+      //remove empty field properties
       !member.phone && delete member.phone
       !member.email && delete member.email
       !member.blood && delete member.blood

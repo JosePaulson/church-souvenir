@@ -7,3 +7,24 @@
 html {
 	font-family: 'Baloo Chettan 2', sans-serif;
 }
+
+/* add custom theme to override default browser theme on autofill */
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: purple;
+}
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: /*your box-shadow*/,0 0 0 50px white inset;
+    -webkit-text-fill-color: purple;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+@media (min-width: 640px) {
+    input:-webkit-autofill {
+        -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+        -webkit-text-fill-color: purple;
+    }
+}

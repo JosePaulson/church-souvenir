@@ -1,4 +1,4 @@
-import asyncHandler from "../middlewares/asyncHandler.js";
+import asyncHandler from "../utils/asyncHandler.js";
 import getImageUrl from "../middlewares/multerMiddleware.js";
 import House from "../models/houseModel.js";
 
@@ -7,6 +7,18 @@ import House from "../models/houseModel.js";
 //@access   Public
 const getHouses = asyncHandler(async(req, res) => {
 	const houses = await House.find({})
+	if(houses){
+		res.status(200).json(houses)
+	}else{
+		res.status(500)
+		throw new Error("Server error")
+	}
+})
+//@desc     get all houses
+//@route    GET /api/houses
+//@access   Public
+const getHousesByWard = asyncHandler(async(req, res) => {
+	const houses = await House.find({'ward': req.params.id})
 	if(houses){
 		res.status(200).json(houses)
 	}else{
@@ -45,5 +57,6 @@ async function addHouse (req, res) {
 
 export {
 	getHouses,
+	getHousesByWard,
 	addHouse,
 }
