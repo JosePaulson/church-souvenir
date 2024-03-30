@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useLogoutUserMutation } from '../slices/usersApiSlice'
 import { useNavigate } from 'react-router-dom'
 import { setCredentials } from '../slices/authSlice'
+import { toast } from 'react-toastify'
 const Header = ({ toggleVisible }) => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -27,11 +28,11 @@ const Header = ({ toggleVisible }) => {
 		closeOnClick()
 		logoutUser().then(res => {
 			if (res) {
+				toast("Logout successfull")
 				dispatch(setCredentials(null))
-				alert("Logout successfull")
 				navigate('/login')
 			}
-		}).catch(e => alert(e))
+		}).catch(error => toast(error?.data?.message || error?.error))
 	}
 
 	return (

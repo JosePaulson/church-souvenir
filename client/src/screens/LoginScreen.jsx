@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLoginUserMutation } from '../slices/usersApiSlice'
 import { setCredentials } from '../slices/authSlice'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const LoginScreen = () => {
 	const [show, setShow] = useState(false)
@@ -36,14 +37,14 @@ const LoginScreen = () => {
 	async function handleSubmit(e) {
         e.preventDefault()
         if(!email || !password) {
-            alert('All fields are required')
+            toast('All fields are required')
         } else {
             try {
                 const res = await loginUser({email, password}).unwrap()
-                dispatch(setCredentials({...res}))
+                dispatch(setCredentials({...res, authTime: Date.now()}))
 				navigate('/')
             } catch (error) {
-                alert(error?.data?.message || error?.error)
+                toast(error?.data?.message || error?.error)
             }
         }
     }

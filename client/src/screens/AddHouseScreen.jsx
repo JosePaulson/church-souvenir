@@ -10,6 +10,7 @@ import {
 } from 'react-daisyui'
 import MembersTable from '../components/MembersTable'
 import { useAddHouseMutation } from '../slices/housesApiSlice'
+import { toast } from 'react-toastify'
 
 const AddHouseScreen = () => {
   const navigate = useNavigate()
@@ -63,7 +64,7 @@ const AddHouseScreen = () => {
       setMember(initialValue)
       window.scrollTo(0,0)
     }else{
-      alert("Enter all required fields")
+      toast("Enter all required fields")
     }
   }
 
@@ -88,7 +89,7 @@ const AddHouseScreen = () => {
     e.preventDefault()
     let HOHArr = members.filter((e=>e.HOH==true))
     if(HOHArr.length!==1){
-      alert("HOH error! 1 member should be head of the family, and not more.")
+      toast("HOH error! 1 member should be head of the family, and not more.")
     }else{
       const multiData = new FormData()
       multiData.append('house', house.trim())

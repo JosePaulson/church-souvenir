@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDeleteUserMutation, useLazyGetAllEditorsQuery, useRegisterUserMutation } from '../slices/usersApiSlice'
 import { Button, Input } from 'react-daisyui'
-import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 const RegisterScreen = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     })
-    
-    const navigate = useNavigate()
 
     const { userInfo } = useSelector(state=>state.auth)
 
@@ -36,13 +34,13 @@ const RegisterScreen = () => {
     async function handleSubmit(e) {
         e.preventDefault()
         if (!email || !password) {
-            alert('All fields are required')
+            toast('All fields are required')
         } else {
             try {
                 await registerUser({ ...formData }).unwrap()
-                alert('New editor added')
+                toast('New editor added')
             } catch (error) {
-                alert(error?.data?.message || error?.error)
+                toast(error?.data?.message || error?.error)
             }
             getEditors()
         }
@@ -53,10 +51,10 @@ const RegisterScreen = () => {
     async function handleDeleteEditor(id){
         try {
             await deleteUser(id).unwrap()
-            alert('user deleted')
+            toast('user deleted')
             getEditors()
         } catch (error) {
-            alert(error?.data?.message || error?.error)
+            toast(error?.data?.message || error?.error)
         }
     }
 

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Card } from 'react-daisyui'
 import MembersTable from '../components/MembersTable'
 import Loader from '../components/Loader'
+import { toast } from 'react-toastify'
 
 const WardScreen = () => {
 	const { id: wardNumber } = useParams()
@@ -13,7 +14,7 @@ const WardScreen = () => {
 		isLoading ? 
 			<Loader />
 			: error ? 
-				alert(error?.data?.message || error?.error)
+				toast(error?.data?.message || error?.error)
 				: <div className='relative'>
 					<h1 className='right-0 inline-block px-5 py-2 font-semibold bg-gray-200 rounded-md opacity-95 z-[4] fixed'>W#{wardNumber} &nbsp;{wards[wardNumber - 1].name}</h1>
 					<div className="space-y-5">

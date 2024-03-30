@@ -55,10 +55,12 @@ const authUser = asyncHandler(async (req, res) => {
 //@route    GET /api/auth
 //@access   Admin only
 const getAllEditors = asyncHandler(async (req, res) => {
-    const editors = await User.find({isAdmin: false}).select("-password")
-    if(editors){
+    const editors = await User.find({
+        isAdmin: false
+    }).select("-password")
+    if (editors) {
         res.status(200).json(editors)
-    }else{
+    } else {
         res.status(400)
         throw new Error('Server error, couldn\'t fetch editors')
     }
@@ -81,9 +83,13 @@ const logoutUser = asyncHandler(async (req, res) => {
 //@route    DELETE /api/auth/:id
 //@access   Admin Only
 const deleteUser = asyncHandler(async (req, res) => {
-    const response = await User.deleteOne({_id: req.params.id})
-    if(response){
-        res.status(200).json({'message': 'user deleted'})
+    const response = await User.deleteOne({
+        _id: req.params.id
+    })
+    if (response) {
+        res.status(200).json({
+            'message': 'user deleted'
+        })
     } else {
         res.status(500)
         throw new Error('Could not delete user')
