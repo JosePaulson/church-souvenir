@@ -93,9 +93,25 @@ async function updateHouse(req, res) {
 	}
 }
 
+//@desc     delete house
+//@route    DELETE /api/houses/:id
+//@access   Admin only
+async function deleteHouse(req, res) {
+	if(req.params.id){
+		const response = await House.findByIdAndDelete(req.params.id)
+		if(response){
+			res.status(200).json({'message': 'House deleted'})
+		}else{
+			res.status(500)
+			throw new Error('unexpected error, house not deleted')
+		}
+	}
+}
+
 export {
 	getHouses,
 	getHousesByWard,
 	addHouse,
 	updateHouse,
+	deleteHouse,
 }

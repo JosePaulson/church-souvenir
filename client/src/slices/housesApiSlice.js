@@ -38,6 +38,14 @@ const housesApiSlice = apiSlice.injectEndpoints({
                 credentials: 'include',
 
             })
+        }),
+
+        deleteHouse: builder.mutation({
+            query: (id) => ({
+                url: `${HOUSES_URL}/${id}`,
+                method: 'DELETE',
+                credentials: 'include'
+            })
         })
     })
 })
@@ -47,5 +55,6 @@ export const {
     useAddHouseMutation,
     useGetHousesByWardQuery,
     useUpdateHouseMutation,
+    useDeleteHouseMutation,
 
 } = housesApiSlice

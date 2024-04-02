@@ -14,7 +14,7 @@ import { toast } from 'react-toastify'
 
 const AddHouseScreen = () => {
   const navigate = useNavigate()
-  const [image, setImage] = useState()
+  const [image, setImage] = useState('')
   const [members, setMembers] = useState([])
   const [house, setHouse] = useState('')
   const [ward, setWard] = useState('')
