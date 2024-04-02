@@ -10,17 +10,17 @@ const RegisterScreen = () => {
         password: '',
     })
 
-    const { userInfo } = useSelector(state=>state.auth)
+    const { userInfo } = useSelector(state => state.auth)
 
     const [registerUser, { isLoading }] = useRegisterUserMutation()
 
-    const [ getEditors, {data: editors, isLoading: isEditorsLoading}] = useLazyGetAllEditorsQuery()
+    const [getEditors, { data: editors, isLoading: isEditorsLoading }] = useLazyGetAllEditorsQuery()
 
     const [deleteUser, { isLoading: isDeleteLoading }] = useDeleteUserMutation()
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         getEditors()
-    },[])
+    }, [])
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -48,7 +48,7 @@ const RegisterScreen = () => {
     }
 
 
-    async function handleDeleteEditor(id){
+    async function handleDeleteEditor(id) {
         try {
             await deleteUser(id).unwrap()
             toast('user deleted')
@@ -73,7 +73,7 @@ const RegisterScreen = () => {
             </form>
             {isEditorsLoading ? '' : editors && <div className='flex flex-col gap-3 mt-5'>
                 <h6 className='font-semibold text-center'>Active Editors</h6>
-                {editors.map(editor=><div className='flex justify-between px-3 py-1.5 bg-gray-200 rounded-md' key={editor._id}><span>{editor.email}</span> <span onClick={()=>handleDeleteEditor(editor._id)} className='p-1 px-2 ml-2 text-[.7rem] font-semibold text-gray-200 bg-gray-800 rounded-md cursor-pointer'>Delete</span></div>)}
+                {editors.map(editor => <div className='flex justify-between px-3 py-1.5 bg-gray-200 rounded-md' key={editor._id}><span>{editor.email}</span> <span onClick={() => handleDeleteEditor(editor._id)} className='p-1 px-2 ml-2 text-[.7rem] font-semibold text-gray-200 bg-gray-800 rounded-md cursor-pointer'>Delete</span></div>)}
             </div>}
         </div>
     )

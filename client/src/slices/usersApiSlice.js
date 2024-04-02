@@ -1,14 +1,18 @@
-import { USERS_URL } from "../constants";
-import { apiSlice } from "./apiSlice";
+import {
+    USERS_URL
+} from "../constants";
+import {
+    apiSlice
+} from "./apiSlice";
 
 const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         loginUser: builder.mutation({
-            query:  (data) => ({
-              url: `${USERS_URL}/login`,
-              method: 'POST',
-              body: data,
-              credentials: 'include'
+            query: (data) => ({
+                url: `${USERS_URL}/login`,
+                method: 'POST',
+                body: data,
+                credentials: 'include'
             }),
         }),
 
@@ -21,7 +25,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
-		getAllEditors: builder.query({
+        getAllEditors: builder.query({
             query: () => ({
                 url: USERS_URL,
                 credentials: 'include'
@@ -29,7 +33,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5
         }),
 
-		logoutUser: builder.mutation({
+        logoutUser: builder.mutation({
             query: () => ({
                 url: `${USERS_URL}/logout`,
                 method: 'POST',
@@ -47,10 +51,10 @@ const usersApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const { 
+export const {
     useLoginUserMutation,
     useRegisterUserMutation,
-	useLogoutUserMutation,
+    useLogoutUserMutation,
     useLazyGetAllEditorsQuery,
     useDeleteUserMutation,
 } = usersApiSlice

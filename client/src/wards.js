@@ -1,15 +1,14 @@
-export const wards = [
-	{
+export const wards = [{
 		number: 1,
-		name : "St. മേരീസ് വാർഡ്"
+		name: "St. മേരീസ് വാർഡ്"
 	},
 	{
 		number: 2,
-		name : "St. ജോസഫ്‌സ് വാർഡ്"
+		name: "St. ജോസഫ്‌സ് വാർഡ്"
 	},
 	{
 		number: 3,
-		name : "St. മേരീസ് വാർഡ്"
+		name: "St. മേരീസ് വാർഡ്"
 	},
 	{
 		number: 4,
@@ -17,7 +16,7 @@ export const wards = [
 	},
 	{
 		number: 5,
-		name : "St. മേരീസ് വാർഡ്"
+		name: "St. മേരീസ് വാർഡ്"
 	},
 	{
 		number: 6,
@@ -25,7 +24,7 @@ export const wards = [
 	},
 	{
 		number: 7,
-		name : "St. മേരീസ് വാർഡ്"
+		name: "St. മേരീസ് വാർഡ്"
 	},
 	{
 		number: 8,

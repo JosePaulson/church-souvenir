@@ -63,7 +63,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       {/* Restrict user from zooming on touch devices */}
       <Helmet>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </Helmet>
       <RouterProvider router={router} />
     </Provider>

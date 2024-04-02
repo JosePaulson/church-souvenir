@@ -13,13 +13,13 @@ const App = () => {
     setVisible(visible => !visible);
   }, []);
 
-  const { userInfo } = useSelector(state=>state.auth)
+  const { userInfo } = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
   //clear auth info from localStorage as token expires - 15minutes
-  if('userInfo' in localStorage && userInfo!==null){
-    let expiry = Number(userInfo.authTime) + (15*60*1000)
-    if(Date.now()>expiry){
+  if ('userInfo' in localStorage && userInfo !== null) {
+    let expiry = Number(userInfo.authTime) + (15 * 60 * 1000)
+    if (Date.now() > expiry) {
       dispatch(setCredentials(null))
     }
   }
@@ -32,7 +32,7 @@ const App = () => {
       <main className='mx-auto max-w-[1300px] px-6 mt-[70px]'>
         <Outlet />
       </main>
-      <ToastContainer position='top-right' autoClose={5000} theme='dark' toastStyle={{background: '#000e'}} bodyClassName={'text-gray-400 font-semibold italic'} progressStyle={{background: 'conic-gradient(at center top, #d8b4fe, #86198f)'}}/>
+      <ToastContainer position='top-right' autoClose={5000} theme='dark' toastStyle={{ background: '#000e' }} bodyClassName={'text-gray-400 font-semibold italic'} progressStyle={{ background: 'conic-gradient(at center top, #d8b4fe, #86198f)' }} />
       <ScrollRestoration />
     </>
   )
