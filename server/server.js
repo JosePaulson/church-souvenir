@@ -2,7 +2,7 @@ import express from 'express'
 import connectDB from './config/mongoDBConfig.js'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
-import cors from 'cors'
+// import cors from 'cors'
 import housesRoutes from './routes/housesRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import { notFound, errorHandler } from './middlewares/errorHandler.js'
@@ -16,10 +16,10 @@ connectDB()
 
 const app = express()
 
-app.use(cors({
-    origin: 'https://church-souvenir.vercel.app',
-    credentials: true,
-}))
+// app.use(cors({
+//     origin: 'https://church-souvenir.vercel.app',
+//     credentials: true,
+// }))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
