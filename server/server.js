@@ -42,6 +42,4 @@ app.get('*', (req, res)=>{
 app.use(notFound)
 app.use(errorHandler)
 
-app.listen(port, ()=>{
-    console.log('listening at port', port)
-})
+app.listen(port)
