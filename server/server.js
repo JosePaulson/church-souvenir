@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import housesRoutes from './routes/housesRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import { notFound, errorHandler } from './middlewares/errorHandler.js'
-import path from 'path'
+// import path from 'path'
 
 
 dotenv.config()
@@ -32,16 +32,14 @@ app.use(cookieParser())
 app.use('/api/houses', housesRoutes)
 app.use('/api/auth', authRoutes)
 
-const __dirname = path.resolve()
-app.use(express.static(path.join(__dirname, '/client/dist')))
+// const __dirname = path.resolve()
+// app.use(express.static(path.join(__dirname, '/client/dist')))
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-})
+// app.get('*', (req, res)=>{
+//     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
+// })
 
 app.use(notFound)
 app.use(errorHandler)
 
-app.listen(port, ()=>{
-    console.log('listening at port', port)
-})
+app.listen(port)
